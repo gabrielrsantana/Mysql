@@ -1,0 +1,3 @@
+SELECT user FROM mysql.user;
+
+flush privileges;

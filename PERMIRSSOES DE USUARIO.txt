@@ -1,0 +1,17 @@
+--ver privilegios
+use sys;
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'user';
+
+SHOW GRANTS FOR 'user'@'localhost';
+
+
+GRANT USAGE ON *.* TO `user`@`localhost`
+
+ALTER USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'user';
+
+--se der erros mas consultas,tentar esse codigo
+UPDATE mysql.user SET Grant_priv='Y', Insert_priv='Y' WHERE User='user';
+UPDATE mysql.user SET Grant_priv='Y', Super_priv='Y' WHERE User='user';
+UPDATE mysql.user SET Grant_priv='Y', Select_priv='Y' WHERE User='user';
+
+flush privileges;

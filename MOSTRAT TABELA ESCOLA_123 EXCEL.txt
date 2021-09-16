@@ -1,0 +1,7 @@
+3
+
+Use the below query:
+
+SELECT empid as employeeid,sname as staffname FROM employeemaster INTO
+OUTFILE 'c:/order.csv' FIELDS 
+TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';

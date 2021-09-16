@@ -1,0 +1,22 @@
+select * from notas join alunos on aluno_nota = alunos.matricula_aluno;
+
+
+-- mostra nome do aluno e nota
+select alunos.nome_aluno,nota from notas join alunos on aluno_nota = alunos.matricula_aluno;
+
+
+-- joi de e  3
+select funcionarios.nome_func, locais.descricao_local, turmas.id_turma from turmas join locais join funcionarios on turmas.local_turma = locais.id_local and turmas.professor_turma = funcionarios.cpf_func;
+
+
+
+-- mostrando o locais de sala do aluno
+
+select alunos.nome_aluno, locais.descricao_local from alunos join turmas join locais on alunos.turma_aluno = turmas.id_turma and turmas.local_turma = locais.id_local;
+
+--mostra tudo do local,matricula
+select * from alunos join turmas join locais on alunos.turma_aluno = turmas.id_turma and turmas.local_turma = locais.id_local;
+
+
+-- mostrando nome do professor da turma
+select alunos.nome_aluno, locais.descricao_local, funcionarios.nome_func from alunos join turmas join locais join funcionarios on alunos.turma_aluno = turmas.id_turma and turmas.local_turma = locais.id_local and turmas.professor_turma = funcionarios.cpf_func;
