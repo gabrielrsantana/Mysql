@@ -1,0 +1,91 @@
+1- verificar se o servico esta instalado e rodando em run: services.msc
+2- abrir o prompt de comando na pasta do projeto ou inserir o caminho
+nas variaveis de systema ou ambiente.
+3 - prompt: mysql -u root -p      (senha instalada 'admin')
+############################
+senha root: admin
+#################################
+raidsql  usar GUI para mexer no mysql[
+
+http://g2pc1.bu.edu/~qzpeng/manual/MySQL%20Commands.htm
+
+//referencia original do mysql
+https://dev.mysql.com/doc/refman/8.0/en/create-table.html
+
+
+se nao funcionar vai no path do mysql server 8:
+
+mysql -u root -p      (senha instalada 'admin')
+
+ALTER LOGIN user   //p mudar senha
+WITH PASSWORD = 'user';
+
+show databases;
+
+create database soul_db;
+
+use soul_db;   //##########  seleciona o banco de dados
+
+drop database soul_db;    //deletar 
+
+show tables;
+
+
+//criando tabela
+create table teste(
+    -> id int,
+    -> descricao varchar(30)
+    -> );
+
+//######## select
+
+select * from teste;    //teste é a tabela
+select now();   //tudo que foi na hora, ou tempo atraas..
+
+insert into teste (id,descricao) values(1,'testando');
+date_format(data_venda,'%d/%m/%y')  //exibecomo  25//12/2021
+delete from teste where id ='1' ;
+delete from funcionarios where id = 2;
+
+desc tabela;   //descreve
+
+//##################
+//criando chave primaria e autoincrement para tabela clientes
+
+create table clientes(id int not null primary key auto_increment,cpf varchar(11),nome varchar(30),endereco varchar(120) );
+create table clientes(
+    -> id int not null primary key auto_increment,
+    -> nome varchar(40),
+    -> endereco varchar(120)
+    -> );
+
+create table clientes(
+    -> id int  not null primary key auto_increment,
+    -> cpf varchar(11) unique,
+    -> nome varchar(30)
+    -> );
+
+
+//criando tabela funcionarios
+
+create table funcionarios(id int not null primary key auto_increment,nome varchar(50),cargo varchar(20));
+create table produtos(id int not null primary key auto_increment, codigo varchar(12) not null unique, descricao varchar(30), valor float not null);
+create table vendas(id int not null primary key auto_increment, data_venda date, total float, cliente int);
+
+//update
+UPDATE nome_da_tabela SET col1 = 'joao' where id=1;
+
+
+
+
+
+/usando scripts
+Try:
+
+mysql -u username -p database_name < file.sql
+
+
+=========================
+The same in Windows command prompt:
+
+mysql -p -u [user] [database] < backup-file.sql
